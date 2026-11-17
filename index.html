@@ -385,9 +385,10 @@ Promise.all(['design','layout','hero','services','work','hhc','contact','seo'].m
   if(!id){if(b)b.style.display='none';return}
   var set=function(u){if(b)b.textContent=u?'Open admin':'Admin sign in'};
   id.on('init',set);
-  id.on('login',function(){id.close();document.location.href='/admin/'});
+  var go=/(invite_token|confirmation_token|recovery_token)=/.test(location.hash);
+  id.on('login',function(u){set(u);if(go){id.close();document.location.href='/admin/'}});
   id.on('logout',function(){set(null)});
-  if(b)b.addEventListener('click',function(){var u=id.currentUser();if(u){document.location.href='/admin/'}else{id.open('login')}});
+  if(b)b.addEventListener('click',function(){var u=id.currentUser();if(u){document.location.href='/admin/'}else{go=true;id.open('login')}});
 })();
 </script>
 </body>
