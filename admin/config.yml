@@ -2,10 +2,11 @@
 # Log in at https://savvyyute.netlify.app/admin/
 backend:
   name: git-gateway
-  branch: main
+  branch: staging
 
-# Every change is saved as a draft first, with its own Netlify preview link.
-# Publish puts it live on savvyyute.netlify.app.
+# Save creates a draft. Publish moves it to the staging branch (dev): nothing goes live.
+# The "Deploy to live site" button in the admin copies staging to main,
+# which is the only thing that deploys savvyyute.netlify.app.
 publish_mode: editorial_workflow
 
 site_url: https://savvyyute.netlify.app
