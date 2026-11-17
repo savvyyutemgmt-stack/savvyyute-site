@@ -21,7 +21,6 @@ collections:
     label: "1. Look and feel"
     label_singular: "Look and feel"
     description: "Colours, fonts and logo for the whole website. Change a colour or font here and it updates everywhere on the site. Photos for individual sections are in 3, 5, 6 and 8."
-    editor: { preview: false }
     files:
       - name: design
         label: "Colours, fonts and logo"
@@ -58,7 +57,6 @@ collections:
     label: "2. Menu and sections"
     label_singular: "Menu and sections"
     description: "The links in the top menu, which sections appear on the page, and the section titles."
-    editor: { preview: false }
     files:
       - name: layout
         label: "Menu, sections and titles"
@@ -115,7 +113,6 @@ collections:
     label: "3. Headline"
     label_singular: "Headline"
     description: "The big headline and intro text at the top of the website."
-    editor: { preview: false }
     files:
       - name: hero
         label: "Headline and intro"
@@ -131,7 +128,6 @@ collections:
     label: "4. Services"
     label_singular: "Services"
     description: "The numbered list of what Savvy Yute offers. Numbers are added automatically in the order shown."
-    editor: { preview: false }
     files:
       - name: services
         label: "Services list"
@@ -153,7 +149,6 @@ collections:
     label: "5. Work and clients"
     label_singular: "Work and clients"
     description: "The client cards, the big numbers, project artists and events."
-    editor: { preview: false }
     files:
       - name: work
         label: "Clients, figures, artists and events"
@@ -185,7 +180,6 @@ collections:
     label: "6. Hip Hop Cabin"
     label_singular: "Hip Hop Cabin"
     description: "The Hip Hop Cabin section, its media partners, and the partner label line underneath."
-    editor: { preview: false }
     files:
       - name: hhc
         label: "Hip Hop Cabin and partner label"
@@ -208,7 +202,6 @@ collections:
     label: "7. Contact"
     label_singular: "Contact"
     description: "Your contact email and locations. Used in the Contact section and the footer."
-    editor: { preview: false }
     files:
       - name: contact
         label: "Email and locations"
@@ -224,7 +217,6 @@ collections:
     label: "8. Google search (SEO)"
     label_singular: "Google search"
     description: "How the site appears in Google results and when the link is shared on WhatsApp, X or LinkedIn."
-    editor: { preview: false }
     files:
       - name: seo
         label: "Search title and description"

@@ -48,6 +48,44 @@
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    /* Live preview: the real website, updated as you type */
+    (function(){
+      if(!window.CMS||!window.createClass||!window.h)return;
+      var FOCUS={hero:'hero',services:'services',work:'work',hhc:'hip-hop-cabin',contact:'contact'};
+      function resolve(section,data,getAsset){
+        var a=function(v){if(!v)return v;try{var x=getAsset(v);return x?String(x):v}catch(e){return v}};
+        if(section==='design'&&data.logo)data.logo=a(data.logo);
+        if((section==='hero'||section==='hhc')&&data.image)data.image=a(data.image);
+        if(section==='seo'){if(data.shareImage)data.shareImage=a(data.shareImage);if(data.favicon)data.favicon=a(data.favicon)}
+        if(section==='work'&&data.cards)data.cards=data.cards.map(function(c){if(c&&c.image)c.image=a(c.image);return c});
+        return data;
+      }
+      var SitePreview=createClass({
+        componentDidMount:function(){this.first=true;this.send()},
+        componentDidUpdate:function(){this.send()},
+        send:function(){
+          var f=this.frame;if(!f||!f.contentWindow)return;
+          var raw=this.props.entry.getIn(['data']);var data=raw&&raw.toJS?raw.toJS():{};
+          data=resolve(this.props.section,data,this.props.getAsset);
+          f.contentWindow.postMessage({syPreview:true,section:this.props.section,data:data,focus:FOCUS[this.props.section],quiet:!this.first},'*');
+        },
+        render:function(){
+          var self=this;
+          return h('div',{style:{height:'100vh',display:'flex',flexDirection:'column',margin:'-16px'}},
+            h('div',{style:{background:'#0e0e0e',color:'#f4f4f2',font:'600 13px Archivo,sans-serif',padding:'8px 14px',display:'flex',justifyContent:'space-between'}},
+              h('span',null,'Live preview: your unsaved changes'),
+              h('span',{style:{color:'#ff3b1f'}},'Not live until you publish')),
+            h('iframe',{ref:function(el){self.frame=el},src:'/?preview=1',title:'Live preview',
+              onLoad:function(){self.first=true;self.send();self.first=false},
+              style:{flex:'1',width:'100%',border:'0',background:'#0e0e0e'}}));
+        }
+      });
+      ['design','layout','hero','services','work','hhc','contact','seo'].forEach(function(name){
+        CMS.registerPreviewTemplate(name,function(props){return h(SitePreview,Object.assign({section:name},props))});
+      });
+    })();
+  </script>
 
   <button id="sy-help-btn" type="button">How this works</button>
   <div id="sy-help" role="dialog" aria-modal="true" aria-label="How the Savvy Yute admin works">
@@ -60,7 +98,8 @@
       <ol>
         <li>Click <b>Contents</b> at the top, then pick a section on the left (1 to 8).</li>
         <li>Open the item, change the text, colours or photos, then click <b>Save</b> at the top.</li>
-        <li>Your change is now a draft. Click <b>Check for Preview</b> (or <b>View preview</b>) to see it on a test version of the site.</li>
+        <li>While you edit, the <b>live preview</b> on the right shows the real website with your changes as you type. Use the eye icon at the top of the editor to show or hide it.</li>
+        <li>After saving, your change is a draft. Click <b>Check for Preview</b> (or <b>View preview</b>) to open it on a test version of the site you can share.</li>
         <li>Happy with it? Set the status to <b>Ready</b>, then click <b>Publish</b> and choose <b>Publish now</b>. The live site updates in about a minute.</li>
       </ol>
 
