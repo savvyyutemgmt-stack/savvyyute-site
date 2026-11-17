@@ -366,7 +366,15 @@ function render(){
 }
 render();
 
-fetch('/content.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(d=>{if(d){C=merge(DEFAULT,d);render()}}).catch(()=>{});
+const get=f=>fetch('/content/'+f+'.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null);
+Promise.all(['design','layout','hero','services','work','hhc','contact','seo'].map(get)).then(([design,layout,hero,services,work,hhc,contact,seo])=>{
+  const d={};
+  if(design)d.design=design;if(layout)d.layout=layout;if(hero)d.hero=hero;if(seo)d.seo=seo;if(contact)d.contact=contact;
+  if(services&&services.items)d.services=services.items;
+  if(work){if(work.cards)d.work=work.cards;if(work.stats)d.stats=work.stats;if(work.projectArtists)d.projectArtists=work.projectArtists;if(work.events)d.events=work.events}
+  if(hhc){d.hhc={intro:hhc.intro,partners:hhc.partners||[]};if(hhc.partnerLabel!==undefined)d.partner={text:hhc.partnerLabel}}
+  C=merge(DEFAULT,d);render();
+});
 }
 </script>
 <script>

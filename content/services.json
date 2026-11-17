@@ -1,0 +1,34 @@
+{
+  "items": [
+    {
+      "title": "Artist management",
+      "who": "Artists, Labels",
+      "text": "Career direction, team building and day-to-day decisions. We work with signed and independent acts, often on short-term deals built around one release or project."
+    },
+    {
+      "title": "A&R",
+      "who": "Artists, Labels",
+      "text": "Sound direction, collaborators and song selection, so every release is the right one."
+    },
+    {
+      "title": "Distribution and publishing admin",
+      "who": "Artists, Labels",
+      "text": "Delivery, metadata and PRO registration handled properly, so royalties reach the people who earned them."
+    },
+    {
+      "title": "Release paperwork",
+      "who": "Artists, Labels",
+      "text": "Split sheets, producer agreements and featured-artist agreements, cleared before release day."
+    },
+    {
+      "title": "Rollout, PR and marketing",
+      "who": "Artists, Labels, Brands",
+      "text": "DSP and editorial pitching, press releases, paid social and listening sessions across Nigeria and Ghana."
+    },
+    {
+      "title": "Events and brand partnerships",
+      "who": "Brands",
+      "text": "Event project management in Lagos and Accra, from planning and ticketing to the night itself, and artist partnerships for brands that want the right voice."
+    }
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "cards": [
+    {
+      "name": "Tribe Boyz",
+      "kind": "Management client",
+      "points": [
+        "Co-signs from MI Abaga and Odumodublvck",
+        "Debut EP in the top 100 of Apple Music Nigeria's hip-hop chart",
+        "Debut Lagos show, 200+ in attendance"
+      ],
+      "image": ""
+    },
+    {
+      "name": "Napoleon TBFI",
+      "kind": "Management client",
+      "points": [
+        "\"BURTI RIDDIM (Rager 77)\" on Alté Cruise and Naija Bars",
+        "Take Risk and Prosper rollout, listening session at Oblivion",
+        "Double XP!, November 2026"
+      ],
+      "image": ""
+    },
+    {
+      "name": "Maxijonez",
+      "kind": "Management client",
+      "points": [
+        "Featured on \"2 Much Band$$$\" with Napoleon TBFI",
+        "Artist management and release support"
+      ],
+      "image": ""
+    },
+    {
+      "name": "Hip Hop Cabin Sessions",
+      "kind": "Media, our own",
+      "points": [
+        "Performance series filmed between Lagos and Accra",
+        "Opened with Napoleon TBFI"
+      ],
+      "image": ""
+    }
+  ],
+  "stats": [
+    {
+      "value": "2021",
+      "label": "Working with artists since"
+    },
+    {
+      "value": "10+",
+      "label": "Artists worked with"
+    },
+    {
+      "value": "20+",
+      "label": "Editorial playlist placements on Apple Music, Spotify and Audiomack"
+    }
+  ],
+  "projectArtists": [
+    "AJ Rock",
+    "Vohox",
+    "King Vin"
+  ],
+  "events": [
+    "Vobe Yard",
+    "Nothing Bad Happens on a Friday",
+    "An Evening with Tribe Boyz, with Green Camp"
+  ]
+}

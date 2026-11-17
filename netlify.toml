@@ -2,6 +2,6 @@
   publish = "."
 
 [[headers]]
-  for = "/content.json"
+  for = "/content/*"
   [headers.values]
     Cache-Control = "no-cache"

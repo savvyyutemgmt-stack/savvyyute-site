@@ -1,0 +1,22 @@
+{
+  "logo": "",
+  "colors": {
+    "background": "#0e0e0e",
+    "text": "#f4f4f2",
+    "accent": "#ff3b1f",
+    "workStart": "#ff3b1f",
+    "workMiddle": "#ff8a3d",
+    "workEnd": "#f2c7a8",
+    "workText": "#0e0e0e",
+    "contactBackground": "#c9b4ff",
+    "contactText": "#0e0e0e"
+  },
+  "fonts": {
+    "heading": "Anton",
+    "body": "Archivo",
+    "headingCase": "UPPERCASE",
+    "headingSize": "Medium",
+    "bodySize": "Medium"
+  },
+  "scrollingTitles": true
+}

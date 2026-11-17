@@ -1,0 +1,71 @@
+{
+  "nav": [
+    {
+      "label": "Artist services",
+      "target": "services"
+    },
+    {
+      "label": "Label services",
+      "target": "services"
+    },
+    {
+      "label": "Brand partnerships",
+      "target": "services"
+    },
+    {
+      "label": "Hip Hop Cabin",
+      "target": "hip-hop-cabin"
+    },
+    {
+      "label": "Work",
+      "target": "work"
+    },
+    {
+      "label": "Contact",
+      "target": "contact"
+    }
+  ],
+  "sections": {
+    "route": true,
+    "services": true,
+    "work": true,
+    "hhc": true,
+    "partner": true,
+    "contact": true
+  },
+  "titles": {
+    "services": "Services",
+    "work": "Work",
+    "hhc": "Hip Hop Cabin",
+    "partners": "Media partner for",
+    "partnerLabel": "Partner label",
+    "project": "Project work with",
+    "events": "Events we've run"
+  },
+  "route": {
+    "start": "LAGOS",
+    "end": "ACCRA",
+    "steps": [
+      {
+        "title": "Paperwork",
+        "detail": "Splits and agreements signed"
+      },
+      {
+        "title": "Distribution",
+        "detail": "Delivery and metadata"
+      },
+      {
+        "title": "Pitching",
+        "detail": "DSP and editorial"
+      },
+      {
+        "title": "Release",
+        "detail": "Day one, both markets"
+      },
+      {
+        "title": "Marketing",
+        "detail": "PR, content and paid"
+      }
+    ]
+  }
+}
