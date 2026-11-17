@@ -9,6 +9,8 @@
 <meta property="og:title" content="Savvy Yute Management">
 <meta property="og:description" content="Artist management and music services, Lagos to Accra.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="" id="ogimg">
+<link rel="icon" href="data:," id="favicon">
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"Organization","name":"Savvy Yute Management","foundingDate":"2021","email":"savvyyutemgmt@gmail.com","areaServed":["Lagos, Nigeria","Accra, Ghana"],"subOrganization":{"@type":"Organization","name":"Hip Hop Cabin"},"description":"Artist management and music services: A&R, distribution, publishing administration, release paperwork, rollout, PR and events."}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link id="fontlink" href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -36,7 +38,9 @@ nav img{width:64px}
 nav ul{display:flex;flex-wrap:wrap;gap:4px 24px;list-style:none;margin:0;padding:0}
 nav ul a{text-decoration:none;font-weight:600;font-size:14px;padding:10px 0;display:inline-block;color:var(--soft2)}
 nav ul a:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:6px}
-.hero{text-align:center;padding-top:clamp(48px,8vw,110px)}
+.hero{text-align:center;padding-top:clamp(48px,8vw,110px);background:var(--bg) center/cover no-repeat}
+.hero.img h1,.hero.img p{text-shadow:0 2px 18px rgba(0,0,0,.45)}
+.hhcimg{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;margin-top:22px;display:none}
 .hero h1{font-size:calc(clamp(46px,8vw,104px)*var(--hs));max-width:14ch;margin:0 auto}
 .hero p{margin:22px auto 0;font-size:clamp(17px,1.6vw,20px);color:var(--soft2);max-width:46ch}
 .hero p em{font-style:normal;color:var(--red);font-weight:600}
@@ -126,7 +130,7 @@ footer .copy{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;a
   </ul>
 </nav>
 
-<header class="band hero">
+<header class="band hero" id="hero">
   <h1 id="h-head">Artist management, Lagos to Accra</h1>
   <p id="h-intro">We manage artists and run releases for <em>artists</em>, <em>labels</em> and <em>brands</em>, from the paperwork to the playlists. Through Hip Hop Cabin, we cover the culture too.</p>
   <div class="route" id="sec-route" aria-label="How a release runs: paperwork, distribution, pitching, release, marketing">
@@ -184,6 +188,7 @@ footer .copy{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;a
     <div class="grid">
       <div>
         <h2 id="t-hhc">Hip Hop Cabin</h2>
+        <img id="hhc-img" class="hhcimg" alt="Hip Hop Cabin">
         <p class="lead" id="hhc-intro">Our media arm, founded in 2021. Hip Hop Cabin documents African hip-hop with intentional reporting and puts new voices in front of the people who should hear them.</p>
       </div>
       <div>
@@ -287,8 +292,8 @@ f.addEventListener('submit',e=>{
 });
 
 const DEFAULT={
-  seo:{title:"Savvy Yute Management | Artist Management, Lagos and Accra",description:"Savvy Yute Management is an artist management and music services company working between Lagos and Accra: A&R, distribution, publishing admin, release paperwork, rollout and PR for artists, labels and brands.",keywords:"artist management Lagos, artist management Accra, music distribution Nigeria, music PR Ghana, split sheets, release rollout, Hip Hop Cabin"},
-  hero:{headline:"Artist management, Lagos to Accra",intro:"We manage artists and run releases for artists, labels and brands, from the paperwork to the playlists. Through Hip Hop Cabin, we cover the culture too."},
+  seo:{shareImage:"",favicon:"",title:"Savvy Yute Management | Artist Management, Lagos and Accra",description:"Savvy Yute Management is an artist management and music services company working between Lagos and Accra: A&R, distribution, publishing admin, release paperwork, rollout and PR for artists, labels and brands.",keywords:"artist management Lagos, artist management Accra, music distribution Nigeria, music PR Ghana, split sheets, release rollout, Hip Hop Cabin"},
+  hero:{image:"",headline:"Artist management, Lagos to Accra",intro:"We manage artists and run releases for artists, labels and brands, from the paperwork to the playlists. Through Hip Hop Cabin, we cover the culture too."},
   services:[
     {title:"Artist management",who:"Artists, Labels",text:"Career direction, team building and day-to-day decisions. We work with signed and independent acts, often on short-term deals built around one release or project."},
     {title:"A&R",who:"Artists, Labels",text:"Sound direction, collaborators and song selection, so every release is the right one."},
@@ -306,7 +311,7 @@ const DEFAULT={
   stats:[{value:"2021",label:"Working with artists since"},{value:"10+",label:"Artists worked with"},{value:"20+",label:"Editorial playlist placements on Apple Music, Spotify and Audiomack"}],
   projectArtists:["AJ Rock","Vohox","King Vin"],
   events:["Vobe Yard","Nothing Bad Happens on a Friday","An Evening with Tribe Boyz, with Green Camp"],
-  hhc:{intro:"Our media arm, founded in 2021. Hip Hop Cabin documents African hip-hop with intentional reporting and puts new voices in front of the people who should hear them.",partners:[{name:"Nasty C, Ivyson Tour Lagos",when:"2025"},{name:"Blackstar Line Fest, Chance the Rapper",when:"2022"},{name:"Odumodublvck, The Greatest School Tour",when:"Lagos"},{name:"Manifest's Manifestivities",when:"Two years"},{name:"Make Music Lagos, editorial partner",when:"2026"},{name:"Galaxy Music Awards",when:"2026"}]},
+  hhc:{image:"",intro:"Our media arm, founded in 2021. Hip Hop Cabin documents African hip-hop with intentional reporting and puts new voices in front of the people who should hear them.",partners:[{name:"Nasty C, Ivyson Tour Lagos",when:"2025"},{name:"Blackstar Line Fest, Chance the Rapper",when:"2022"},{name:"Odumodublvck, The Greatest School Tour",when:"Lagos"},{name:"Manifest's Manifestivities",when:"Two years"},{name:"Make Music Lagos, editorial partner",when:"2026"},{name:"Galaxy Music Awards",when:"2026"}]},
   partner:{text:"Tribe Boyz Entertainment is the Lagos hip-hop label that houses Tribe Boyz, Napoleon TBFI and Maxijonez. It's a separate business. Savvy Yute partners with it on artist management and releases."},
   contact:{email:"savvyyutemgmt@gmail.com",note:"Packages are tailored to each project. Start with an inquiry.",locations:"Lagos, Nigeria · Accra, Ghana"},
   design:{logo:"",colors:{background:"#0e0e0e",text:"#f4f4f2",accent:"#ff3b1f",workStart:"#ff3b1f",workMiddle:"#ff8a3d",workEnd:"#f2c7a8",workText:"#0e0e0e",contactBackground:"#c9b4ff",contactText:"#0e0e0e"},fonts:{heading:"Anton",body:"Archivo",headingCase:"UPPERCASE",headingSize:"Medium",bodySize:"Medium"},scrollingTitles:true},
@@ -353,6 +358,10 @@ function applyLayout(){
 function render(){
   applyDesign();applyLayout();
   document.title=C.seo.title;setMeta('description',C.seo.description);setMeta('keywords',C.seo.keywords);setMeta('og:description',C.seo.description,true);
+  const hero=$('hero');if(C.hero.image){hero.classList.add('img');hero.style.backgroundImage=`linear-gradient(180deg,color-mix(in srgb,var(--bg) 55%,transparent),var(--bg)),url('${C.hero.image}')`}else{hero.classList.remove('img');hero.style.backgroundImage=''}
+  const hi=$('hhc-img');if(C.hhc.image){hi.src=C.hhc.image;hi.style.display='block'}else{hi.removeAttribute('src');hi.style.display='none'}
+  if(C.seo.shareImage)$('ogimg').setAttribute('content',location.origin+C.seo.shareImage);
+  if(C.seo.favicon)$('favicon').href=C.seo.favicon;
   $('h-head').textContent=C.hero.headline;
   $('h-intro').innerHTML=esc(C.hero.intro).replace(/\b(artists|labels|brands)\b/i,'<em>$1</em>').replace(/(<\/em>[^<]*?)\b(labels)\b/i,'$1<em>$2</em>').replace(/(<\/em>[^<]*?)\b(brands)\b/i,'$1<em>$2</em>');
   $('svc').innerHTML=C.services.map((x,i)=>`<li><span class="n">${pad(i+1)}</span><div><h3>${esc(x.title)}</h3><div class="for">${String(x.who||'').split(',').map(w=>w.trim()).filter(Boolean).map(w=>`<b>${esc(w)}</b>`).join('')}</div></div><p>${esc(x.text)}</p></li>`).join('');
@@ -374,7 +383,7 @@ Promise.all(['design','layout','hero','services','work','hhc','contact','seo'].m
   if(design)d.design=design;if(layout)d.layout=layout;if(hero)d.hero=hero;if(seo)d.seo=seo;if(contact)d.contact=contact;
   if(services&&services.items)d.services=services.items;
   if(work){if(work.cards)d.work=work.cards;if(work.stats)d.stats=work.stats;if(work.projectArtists)d.projectArtists=work.projectArtists;if(work.events)d.events=work.events}
-  if(hhc){d.hhc={intro:hhc.intro,partners:hhc.partners||[]};if(hhc.partnerLabel!==undefined)d.partner={text:hhc.partnerLabel}}
+  if(hhc){d.hhc={image:hhc.image||'',intro:hhc.intro,partners:hhc.partners||[]};if(hhc.partnerLabel!==undefined)d.partner={text:hhc.partnerLabel}}
   C=merge(DEFAULT,d);render();
 });
 }

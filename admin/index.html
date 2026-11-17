@@ -5,9 +5,112 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="robots" content="noindex">
   <title>Savvy Yute admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700&display=swap" rel="stylesheet">
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <style>
+    /* Savvy Yute brand on top of the Decap CMS interface */
+    :root{--sy-ink:#0e0e0e;--sy-red:#ff3b1f;--sy-paper:#f4f3f0;--sy-line:#e3e1dc}
+    body{font-family:Archivo,system-ui,sans-serif !important;background:var(--sy-paper) !important}
+    [class*="-AppHeader-css"]{background:var(--sy-ink) !important;box-shadow:none !important}
+    [class*="AppHeaderNavLink"],[class*="AppHeaderButton"],[class*="AppHeaderSiteLink"]{color:#d8d6d2 !important;font-weight:600 !important}
+    [class*="AppHeaderNavLink"]:hover,[class*="AppHeaderSiteLink"]:hover{color:#fff !important}
+    [class*="AppHeaderNavLink"][class*="buttonActive"],[class*="AppHeaderNavLink"].active{color:#fff !important;box-shadow:inset 0 -3px 0 var(--sy-red) !important}
+    [class*="AppHeaderNavLink"] svg,[class*="AppHeaderButton"] svg{color:inherit !important;fill:currentColor}
+    [class*="WorkflowTopHeading"],[class*="CollectionTopHeading"],[class*="SidebarHeading"]{font-family:Anton,Impact,sans-serif !important;font-weight:400 !important;text-transform:uppercase;letter-spacing:.01em}
+    [class*="SidebarNavLink"][class*="active"],[class*="SidebarNavLink"]:hover{color:var(--sy-red) !important;border-left-color:var(--sy-red) !important}
+    [class*="ColumnHeader"]{font-weight:700 !important}
+    [class*="ToolbarContainer"]{border-bottom:3px solid var(--sy-ink) !important}
+    [class*="FieldLabel"]{font-weight:700 !important}
+    [class*="ControlHint"]{color:#5d5a55 !important;font-size:13px !important;line-height:1.45 !important}
+    a{color:inherit}
+    /* help button and guide */
+    #sy-help-btn{position:fixed;right:18px;bottom:18px;z-index:9999;background:var(--sy-red);color:#0e0e0e;border:0;border-radius:999px;padding:12px 20px;font:700 15px Archivo,sans-serif;cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+    #sy-help-btn:hover{background:#0e0e0e;color:#fff}
+    #sy-help{position:fixed;inset:0;z-index:10000;background:rgba(14,14,14,.55);display:none;align-items:flex-start;justify-content:center;overflow:auto;padding:40px 16px}
+    #sy-help.on{display:flex}
+    #sy-help .box{background:#fff;color:#141414;max-width:720px;width:100%;border-radius:10px;padding:28px clamp(20px,4vw,40px) 32px;font:16px/1.6 Archivo,sans-serif}
+    #sy-help h2{font:400 34px/1.05 Anton,Impact,sans-serif;text-transform:uppercase;margin:0 0 6px}
+    #sy-help h3{font:400 22px/1.1 Anton,Impact,sans-serif;text-transform:uppercase;margin:26px 0 8px}
+    #sy-help p{margin:0 0 10px}
+    #sy-help ol,#sy-help ul{margin:0 0 10px;padding-left:22px}
+    #sy-help li{margin-bottom:6px}
+    #sy-help .flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin:10px 0 6px}
+    #sy-help .flow div{background:#f4f3f0;border-top:4px solid #c9c5be;padding:10px 12px;font-size:14px}
+    #sy-help .flow div:last-child{border-top-color:var(--sy-red);background:#fff1ee}
+    #sy-help .flow b{display:block;font-size:15px}
+    #sy-help table{width:100%;border-collapse:collapse;font-size:14px}
+    #sy-help td{border-top:1px solid var(--sy-line);padding:8px 6px;vertical-align:top}
+    #sy-help td:first-child{font-weight:700;white-space:nowrap}
+    #sy-help .close{float:right;background:#0e0e0e;color:#fff;border:0;border-radius:999px;padding:8px 16px;font:600 14px Archivo,sans-serif;cursor:pointer}
+    @media(max-width:600px){#sy-help .flow{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}}
+  </style>
 </head>
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <button id="sy-help-btn" type="button">How this works</button>
+  <div id="sy-help" role="dialog" aria-modal="true" aria-label="How the Savvy Yute admin works">
+    <div class="box">
+      <button class="close" type="button" id="sy-help-close">Close</button>
+      <h2>How this works</h2>
+      <p>This is where you change the Savvy Yute website. Nothing you do here goes live until you publish it.</p>
+
+      <h3>Making a change</h3>
+      <ol>
+        <li>Click <b>Contents</b> at the top, then pick a section on the left (1 to 8).</li>
+        <li>Open the item, change the text, colours or photos, then click <b>Save</b> at the top.</li>
+        <li>Your change is now a draft. Click <b>Check for Preview</b> (or <b>View preview</b>) to see it on a test version of the site.</li>
+        <li>Happy with it? Set the status to <b>Ready</b>, then click <b>Publish</b> and choose <b>Publish now</b>. The live site updates in about a minute.</li>
+      </ol>
+
+      <h3>What "Workflow" means</h3>
+      <p>Workflow is the board of changes that aren't live yet. Each saved change is a card that moves left to right:</p>
+      <div class="flow">
+        <div><b>Drafts</b>Being worked on</div>
+        <div><b>In review</b>Check the preview link</div>
+        <div><b>Ready</b>Approved</div>
+        <div><b>Publish</b>Live on the website</div>
+      </div>
+      <p>Any admin can see everyone's drafts here. Delete a draft card if you change your mind; the live site stays as it was.</p>
+
+      <h3>Where to find things</h3>
+      <table>
+        <tr><td>1. Look and feel</td><td>Colours, fonts, text size, logo</td></tr>
+        <tr><td>2. Menu and sections</td><td>Top menu, show or hide sections, section titles, the Lagos to Accra route</td></tr>
+        <tr><td>3. Headline</td><td>Headline, intro, background photo</td></tr>
+        <tr><td>4. Services</td><td>The numbered services list</td></tr>
+        <tr><td>5. Work and clients</td><td>Client cards and photos, big numbers, project artists, events</td></tr>
+        <tr><td>6. Hip Hop Cabin</td><td>About text, photo, media partners, partner label line</td></tr>
+        <tr><td>7. Contact</td><td>Email and locations</td></tr>
+        <tr><td>8. Google search</td><td>Google title and description, share image, browser tab icon</td></tr>
+      </table>
+
+      <h3>Photos</h3>
+      <ul>
+        <li>Any field marked with an image button lets you upload from your computer or pick a photo you've uploaded before.</li>
+        <li>All uploads live under <b>Media</b> at the top. You can upload or delete photos there too.</li>
+        <li>Keep photos under 1 MB so the site stays fast. JPG for photos, PNG for logos.</li>
+        <li>Sizes that work: headline background 1600 px wide or more; client cards portrait, about 900 x 1200; share image 1200 x 630.</li>
+      </ul>
+
+      <h3>Tips</h3>
+      <ul>
+        <li>Drag items in a list to reorder them.</li>
+        <li>Switching a section off in 2 hides it. Nothing is deleted.</li>
+        <li>Colour fields: click the swatch to pick, or paste a code like #ff3b1f.</li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    (function(){
+      var m=document.getElementById('sy-help');
+      document.getElementById('sy-help-btn').onclick=function(){m.classList.add('on')};
+      document.getElementById('sy-help-close').onclick=function(){m.classList.remove('on')};
+      m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('on')});
+      document.addEventListener('keydown',function(e){if(e.key==='Escape')m.classList.remove('on')});
+      try{if(!localStorage.getItem('sy-help-seen')){m.classList.add('on');localStorage.setItem('sy-help-seen','1')}}catch(e){}
+    })();
+  </script>
 </body>
 </html>

@@ -20,7 +20,7 @@ collections:
   - name: look
     label: "1. Look and feel"
     label_singular: "Look and feel"
-    description: "Colours, fonts and logo for the whole website. Change a colour or font here and it updates everywhere on the site."
+    description: "Colours, fonts and logo for the whole website. Change a colour or font here and it updates everywhere on the site. Photos for individual sections are in 3, 5, 6 and 8."
     editor: { preview: false }
     files:
       - name: design
@@ -122,6 +122,7 @@ collections:
         file: content/hero.json
         format: json
         fields:
+          - { label: "Background photo", name: image, widget: image, required: false, hint: "Optional. A wide photo (landscape, at least 1600px wide) behind the headline. It's darkened automatically so the text stays readable. Leave empty for a plain background." }
           - { label: "Headline", name: headline, widget: string, hint: "Keep it short. It shows very large." }
           - { label: "Intro", name: intro, widget: text, hint: "The words artists, labels and brands turn the accent colour automatically." }
 
@@ -191,6 +192,7 @@ collections:
         file: content/hhc.json
         format: json
         fields:
+          - { label: "Hip Hop Cabin photo", name: image, widget: image, required: false, hint: "Optional. Shows under the Hip Hop Cabin title, e.g. a Cabin Sessions still. Landscape works best." }
           - { label: "About Hip Hop Cabin", name: intro, widget: text }
           - label: "Media partners"
             name: partners
@@ -232,3 +234,5 @@ collections:
           - { label: "Page title", name: title, widget: string, hint: "The blue link in Google and the browser tab. Under 60 characters." }
           - { label: "Description", name: description, widget: text, hint: "The grey text under the link in Google. Aim for 140 to 160 characters." }
           - { label: "Keywords", name: keywords, widget: string, hint: "Comma separated. Optional." }
+          - { label: "Share image", name: shareImage, widget: image, required: false, hint: "The picture that shows when the link is shared on WhatsApp, X or LinkedIn. Use 1200 x 630 pixels." }
+          - { label: "Browser tab icon", name: favicon, widget: image, required: false, hint: "The small icon in the browser tab. A square PNG, at least 64 x 64 pixels." }
