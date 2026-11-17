@@ -3,7 +3,7 @@
 Live: https://savvyyute.netlify.app
 Admin: https://savvyyute.netlify.app/admin/
 
-- Page text and design settings live in `content/` (one file per admin section), edited through the admin panel (Decap CMS).
+- Page text and design settings live in `content/site.json`, edited through the admin panel (Decap CMS) with a live preview.
 - Edits are saved as drafts with a Netlify preview link; "Publish" puts them live.
 - `index.html` holds the design and renders whatever is in `content.json`.
 

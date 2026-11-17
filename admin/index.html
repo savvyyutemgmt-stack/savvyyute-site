@@ -49,41 +49,50 @@
 <body>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
-    /* Live preview: the real website, updated as you type */
+    /* Live preview: the real website beside the editor, updated as you type */
     (function(){
+      if(location.hash===''||location.hash==='#/'||location.hash==='#/collections/website'){location.hash='#/collections/website/entries/site'}
       if(!window.CMS||!window.createClass||!window.h)return;
-      var FOCUS={hero:'hero',services:'services',work:'work',hhc:'hip-hop-cabin',contact:'contact'};
-      function resolve(section,data,getAsset){
+      function resolve(d,getAsset){
         var a=function(v){if(!v)return v;try{var x=getAsset(v);return x?String(x):v}catch(e){return v}};
-        if(section==='design'&&data.logo)data.logo=a(data.logo);
-        if((section==='hero'||section==='hhc')&&data.image)data.image=a(data.image);
-        if(section==='seo'){if(data.shareImage)data.shareImage=a(data.shareImage);if(data.favicon)data.favicon=a(data.favicon)}
-        if(section==='work'&&data.cards)data.cards=data.cards.map(function(c){if(c&&c.image)c.image=a(c.image);return c});
-        return data;
+        if(d.theme&&d.theme.logo)d.theme.logo=a(d.theme.logo);
+        if(d.hero&&d.hero.image)d.hero.image=a(d.hero.image);
+        if(d.seo){if(d.seo.shareImage)d.seo.shareImage=a(d.seo.shareImage);if(d.seo.favicon)d.seo.favicon=a(d.seo.favicon)}
+        if(d.work&&d.work.cards)d.work.cards.forEach(function(c){if(c&&c.image)c.image=a(c.image)});
+        if(d.ventures&&d.ventures.items)d.ventures.items.forEach(function(v){if(v&&v.image)v.image=a(v.image)});
+        return d;
       }
+      window.__syFrame=null;
       var SitePreview=createClass({
-        componentDidMount:function(){this.first=true;this.send()},
+        componentDidMount:function(){this.send()},
         componentDidUpdate:function(){this.send()},
         send:function(){
-          var f=this.frame;if(!f||!f.contentWindow)return;
+          var f=this.frame;if(!f||!f.contentWindow)return;window.__syFrame=f;
           var raw=this.props.entry.getIn(['data']);var data=raw&&raw.toJS?raw.toJS():{};
-          data=resolve(this.props.section,data,this.props.getAsset);
-          f.contentWindow.postMessage({syPreview:true,section:this.props.section,data:data,focus:FOCUS[this.props.section],quiet:!this.first},'*');
+          f.contentWindow.postMessage({syPreview:true,data:resolve(data,this.props.getAsset)},'*');
         },
         render:function(){
           var self=this;
           return h('div',{style:{height:'100vh',display:'flex',flexDirection:'column',margin:'-16px'}},
-            h('div',{style:{background:'#0e0e0e',color:'#f4f4f2',font:'600 13px Archivo,sans-serif',padding:'8px 14px',display:'flex',justifyContent:'space-between'}},
-              h('span',null,'Live preview: your unsaved changes'),
+            h('div',{style:{background:'#0e0e0e',color:'#f4f4f2',font:'600 13px Archivo,sans-serif',padding:'8px 14px',display:'flex',justifyContent:'space-between',gap:'12px'}},
+              h('span',null,'Live preview'),
               h('span',{style:{color:'#ff3b1f'}},'Not live until you publish')),
             h('iframe',{ref:function(el){self.frame=el},src:'/?preview=1',title:'Live preview',
-              onLoad:function(){self.first=true;self.send();self.first=false},
+              onLoad:function(){self.send()},
               style:{flex:'1',width:'100%',border:'0',background:'#0e0e0e'}}));
         }
       });
-      ['design','layout','hero','services','work','hhc','contact','seo'].forEach(function(name){
-        CMS.registerPreviewTemplate(name,function(props){return h(SitePreview,Object.assign({section:name},props))});
-      });
+      CMS.registerPreviewTemplate('site',SitePreview);
+
+      /* Clicking a section on the left scrolls the preview to it */
+      var MAP=[['hero banner','top'],['header','top'],['theme','top'],['services','services'],['portfolio','work'],['ventures','ventures'],['partners','sec-partner'],['contact','contact'],['seo','top']];
+      document.addEventListener('click',function(e){
+        var bar=e.target.closest&&e.target.closest('[class*="TopBarContainer"],[class*="ObjectControl"] > div:first-child');
+        if(!bar)return;
+        var t=(bar.textContent||'').toLowerCase().trim();
+        for(var i=0;i<MAP.length;i++){if(t.indexOf(MAP[i][0])===0){
+          var f=window.__syFrame;if(f&&f.contentWindow)f.contentWindow.postMessage({syFocus:MAP[i][1]},'*');break}}
+      },true);
     })();
   </script>
 
@@ -96,8 +105,9 @@
 
       <h3>Making a change</h3>
       <ol>
-        <li>Click <b>Contents</b> at the top, then pick a section on the left (1 to 8).</li>
-        <li>Open the item, change the text, colours or photos, then click <b>Save</b> at the top.</li>
+        <li>Open <b>Edit website</b>. Every section of the site is listed on the left: Theme settings, Header and menu, Hero banner, Services, Portfolio, Ventures, Partners, Contact and footer, SEO and sharing.</li>
+        <li>Click a section to open it. The live preview on the right jumps to that part of the site. Click another section any time; you never leave the page.</li>
+        <li>Change the text, colours or photos, then click <b>Save</b> at the top.</li>
         <li>While you edit, the <b>live preview</b> on the right shows the real website with your changes as you type. Use the eye icon at the top of the editor to show or hide it.</li>
         <li>After saving, your change is a draft. Click <b>Check for Preview</b> (or <b>View preview</b>) to open it on a test version of the site you can share.</li>
         <li>Happy with it? Set the status to <b>Ready</b>, then click <b>Publish</b> and choose <b>Publish now</b>. The live site updates in about a minute.</li>
@@ -115,14 +125,15 @@
 
       <h3>Where to find things</h3>
       <table>
-        <tr><td>1. Look and feel</td><td>Colours, fonts, text size, logo</td></tr>
-        <tr><td>2. Menu and sections</td><td>Top menu, show or hide sections, section titles, the Lagos to Accra route</td></tr>
-        <tr><td>3. Headline</td><td>Headline, intro, background photo</td></tr>
-        <tr><td>4. Services</td><td>The numbered services list</td></tr>
-        <tr><td>5. Work and clients</td><td>Client cards and photos, big numbers, project artists, events</td></tr>
-        <tr><td>6. Hip Hop Cabin</td><td>About text, photo, media partners, partner label line</td></tr>
-        <tr><td>7. Contact</td><td>Email and locations</td></tr>
-        <tr><td>8. Google search</td><td>Google title and description, share image, browser tab icon</td></tr>
+        <tr><td>Theme settings</td><td>Colours, fonts, text size, logo</td></tr>
+        <tr><td>Header and menu</td><td>Top menu links</td></tr>
+        <tr><td>Hero banner</td><td>Headline, intro, background photo, the route graphic</td></tr>
+        <tr><td>Services</td><td>The numbered services list and its title</td></tr>
+        <tr><td>Portfolio</td><td>Client cards and photos, key figures, project artists, events</td></tr>
+        <tr><td>Ventures</td><td>Businesses under Savvy Yute, e.g. Hip Hop Cabin. Add one entry per business</td></tr>
+        <tr><td>Partners</td><td>The partner label line (Tribe Boyz Entertainment)</td></tr>
+        <tr><td>Contact and footer</td><td>Email, inquiry note, locations</td></tr>
+        <tr><td>SEO and sharing</td><td>Google title and description, share image, browser tab icon</td></tr>
       </table>
 
       <h3>Photos</h3>
@@ -136,7 +147,7 @@
       <h3>Tips</h3>
       <ul>
         <li>Drag items in a list to reorder them.</li>
-        <li>Switching a section off in 2 hides it. Nothing is deleted.</li>
+        <li>Each section has a <b>Show this section</b> switch. Turning it off hides it. Nothing is deleted.</li>
         <li>Colour fields: click the swatch to pick, or paste a code like #ff3b1f.</li>
       </ul>
     </div>
@@ -148,7 +159,7 @@
       document.getElementById('sy-help-close').onclick=function(){m.classList.remove('on')};
       m.addEventListener('click',function(e){if(e.target===m)m.classList.remove('on')});
       document.addEventListener('keydown',function(e){if(e.key==='Escape')m.classList.remove('on')});
-      try{if(!localStorage.getItem('sy-help-seen')){m.classList.add('on');localStorage.setItem('sy-help-seen','1')}}catch(e){}
+      try{if(!localStorage.getItem('sy-help-seen-2')){m.classList.add('on');localStorage.setItem('sy-help-seen-2','1')}}catch(e){}
     })();
   </script>
 </body>

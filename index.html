@@ -40,7 +40,10 @@ nav ul a{text-decoration:none;font-weight:600;font-size:14px;padding:10px 0;disp
 nav ul a:hover{color:var(--ink);text-decoration:underline;text-decoration-color:var(--red);text-underline-offset:6px}
 .hero{text-align:center;padding-top:clamp(48px,8vw,110px);background:var(--bg) center/cover no-repeat}
 .hero.img h1,.hero.img p{text-shadow:0 2px 18px rgba(0,0,0,.45)}
-.hhcimg{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;margin-top:22px;display:none}
+.venture+.venture{margin-top:clamp(40px,6vw,80px);padding-top:clamp(32px,5vw,64px);border-top:1px solid var(--line)}
+.vtag{display:block;font-size:15px;color:var(--soft);margin:12px 0 4px}
+.vlink{display:inline-block;margin-top:6px;font-weight:600;color:var(--red)}
+.hhcimg{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:6px;margin-top:22px;display:block}
 .hero h1{font-size:calc(clamp(46px,8vw,104px)*var(--hs));max-width:14ch;margin:0 auto}
 .hero p{margin:22px auto 0;font-size:clamp(17px,1.6vw,20px);color:var(--soft2);max-width:46ch}
 .hero p em{font-style:normal;color:var(--red);font-weight:600}
@@ -125,7 +128,7 @@ footer .copy{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;a
     <li><a href="#services">Artist services</a></li>
     <li><a href="#services">Label services</a></li>
     <li><a href="#services">Brand partnerships</a></li>
-    <li><a href="#hip-hop-cabin">Hip Hop Cabin</a></li>
+    <li><a href="#ventures">Hip Hop Cabin</a></li>
     <li><a href="#work">Work</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
@@ -184,26 +187,9 @@ footer .copy{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;a
   </div>
 </section>
 
-<section class="band hhc" id="hip-hop-cabin">
+<section class="band hhc" id="ventures">
   <div class="wrap">
-    <div class="grid">
-      <div>
-        <h2 id="t-hhc">Hip Hop Cabin</h2>
-        <img id="hhc-img" class="hhcimg" alt="Hip Hop Cabin">
-        <p class="lead" id="hhc-intro">Our media arm, founded in 2021. Hip Hop Cabin documents African hip-hop with intentional reporting and puts new voices in front of the people who should hear them.</p>
-      </div>
-      <div>
-        <h3 style="font-size:22px;margin-bottom:14px" id="t-partners">Media partner for</h3>
-        <ul class="plist" id="partners">
-          <li><b>Nasty C, Ivyson Tour Lagos</b><span>2025</span></li>
-          <li><b>Blackstar Line Fest, Chance the Rapper</b><span>2022</span></li>
-          <li><b>Odumodublvck, The Greatest School Tour</b><span>Lagos</span></li>
-          <li><b>Manifest's Manifestivities</b><span>Two years</span></li>
-          <li><b>Make Music Lagos, editorial partner</b><span>2026</span></li>
-          <li><b>Galaxy Music Awards</b><span>2026</span></li>
-        </ul>
-      </div>
-    </div>
+    <div id="vlist"></div>
     <div class="partner" id="sec-partner">
       <h3 style="font-size:22px" id="t-partner">Partner label</h3>
       <p id="partner"><b style="color:var(--ink)">Tribe Boyz Entertainment</b> is the Lagos hip-hop label that houses Tribe Boyz, Napoleon TBFI and Maxijonez. It's a separate business. Savvy Yute partners with it on artist management and releases.</p>
@@ -313,10 +299,11 @@ const DEFAULT={
   projectArtists:["AJ Rock","Vohox","King Vin"],
   events:["Vobe Yard","Nothing Bad Happens on a Friday","An Evening with Tribe Boyz, with Green Camp"],
   hhc:{image:"",intro:"Our media arm, founded in 2021. Hip Hop Cabin documents African hip-hop with intentional reporting and puts new voices in front of the people who should hear them.",partners:[{name:"Nasty C, Ivyson Tour Lagos",when:"2025"},{name:"Blackstar Line Fest, Chance the Rapper",when:"2022"},{name:"Odumodublvck, The Greatest School Tour",when:"Lagos"},{name:"Manifest's Manifestivities",when:"Two years"},{name:"Make Music Lagos, editorial partner",when:"2026"},{name:"Galaxy Music Awards",when:"2026"}]},
-  partner:{text:"Tribe Boyz Entertainment is the Lagos hip-hop label that houses Tribe Boyz, Napoleon TBFI and Maxijonez. It's a separate business. Savvy Yute partners with it on artist management and releases."},
+  ventures:[{name:"Hip Hop Cabin",tag:"Our media arm",image:"",about:"Founded in 2021. Hip Hop Cabin documents African hip-hop with intentional reporting and puts new voices in front of the people who should hear them.",partnersTitle:"Media partner for",partners:[{name:"Nasty C, Ivyson Tour Lagos",when:"2025"},{name:"Blackstar Line Fest, Chance the Rapper",when:"2022"},{name:"Odumodublvck, The Greatest School Tour",when:"Lagos"},{name:"Manifest's Manifestivities",when:"Two years"},{name:"Make Music Lagos, editorial partner",when:"2026"},{name:"Galaxy Music Awards",when:"2026"}],link:""}],
+  partner:{highlight:"Tribe Boyz Entertainment",text:"Tribe Boyz Entertainment is the Lagos hip-hop label that houses Tribe Boyz, Napoleon TBFI and Maxijonez. It's a separate business. Savvy Yute partners with it on artist management and releases."},
   contact:{email:"savvyyutemgmt@gmail.com",note:"Packages are tailored to each project. Start with an inquiry.",locations:"Lagos, Nigeria · Accra, Ghana"},
   design:{logo:"",colors:{background:"#0e0e0e",text:"#f4f4f2",accent:"#ff3b1f",workStart:"#ff3b1f",workMiddle:"#ff8a3d",workEnd:"#f2c7a8",workText:"#0e0e0e",contactBackground:"#c9b4ff",contactText:"#0e0e0e"},fonts:{heading:"Anton",body:"Archivo",headingCase:"UPPERCASE",headingSize:"Medium",bodySize:"Medium"},scrollingTitles:true},
-  layout:{nav:[{label:"Artist services",target:"services"},{label:"Label services",target:"services"},{label:"Brand partnerships",target:"services"},{label:"Hip Hop Cabin",target:"hip-hop-cabin"},{label:"Work",target:"work"},{label:"Contact",target:"contact"}],
+  layout:{nav:[{label:"Artist services",target:"services"},{label:"Label services",target:"services"},{label:"Brand partnerships",target:"services"},{label:"Hip Hop Cabin",target:"ventures"},{label:"Work",target:"work"},{label:"Contact",target:"contact"}],
     sections:{route:true,services:true,work:true,hhc:true,partner:true,contact:true},
     titles:{services:"Services",work:"Work",hhc:"Hip Hop Cabin",partners:"Media partner for",partnerLabel:"Partner label",project:"Project work with",events:"Events we've run"},
     route:{start:"LAGOS",end:"ACCRA",steps:[{title:"Paperwork",detail:"Splits and agreements signed"},{title:"Distribution",detail:"Delivery and metadata"},{title:"Pitching",detail:"DSP and editorial"},{title:"Release",detail:"Day one, both markets"},{title:"Marketing",detail:"PR, content and paid"}]}}
@@ -348,11 +335,11 @@ function applyDesign(){
 function applyLayout(){
   const L=C.layout,sec=L.sections||{},t=L.titles||{};
   const show=(id,on)=>{const e=$(id);if(e)e.style.display=on===false?'none':''};
-  show('sec-route',sec.route);show('services',sec.services);show('work',sec.work);show('hip-hop-cabin',sec.hhc);show('sec-partner',sec.partner);show('contact',sec.contact);
+  show('sec-route',sec.route);show('services',sec.services);show('work',sec.work);show('ventures',sec.hhc);show('sec-partner',sec.partner);show('contact',sec.contact);
   $('navlist').innerHTML=(L.nav||[]).map(n=>`<li><a href="#${esc(n.target||'top')}">${esc(n.label)}</a></li>`).join('');
   const mq=(id,w)=>{$(id).innerHTML=Array(10).fill(esc(w)).join('<span>·</span>')+'<span>·</span>';$(id).parentElement.setAttribute('aria-label',w)};
   mq('mq-svc',t.services||'Services');mq('mq-work',t.work||'Work');
-  $('t-hhc').textContent=t.hhc;$('t-partners').textContent=t.partners;$('t-partner').textContent=t.partnerLabel;$('t-proj').textContent=t.project;$('t-events').textContent=t.events;
+  $('t-partner').textContent=t.partnerLabel;$('t-proj').textContent=t.project;$('t-events').textContent=t.events;
   $('blk-proj').style.display=C.projectArtists.length?'':'none';$('blk-events').style.display=C.events.length?'':'none';
   const r=L.route||{};ROUTE={start:r.start||'',end:r.end||''};steps=(r.steps||[]).map(x=>({t:x.title,d:x.detail}));draw();
 }
@@ -360,7 +347,6 @@ function render(){
   applyDesign();applyLayout();
   document.title=C.seo.title;setMeta('description',C.seo.description);setMeta('keywords',C.seo.keywords);setMeta('og:description',C.seo.description,true);
   const hero=$('hero');if(C.hero.image){hero.classList.add('img');hero.style.backgroundImage=`linear-gradient(180deg,color-mix(in srgb,var(--bg) 55%,transparent),var(--bg)),url('${C.hero.image}')`}else{hero.classList.remove('img');hero.style.backgroundImage=''}
-  const hi=$('hhc-img');if(C.hhc.image){hi.src=C.hhc.image;hi.style.display='block'}else{hi.removeAttribute('src');hi.style.display='none'}
   if(C.seo.shareImage)$('ogimg').setAttribute('content',location.origin+C.seo.shareImage);
   if(C.seo.favicon)$('favicon').href=C.seo.favicon;
   $('h-head').textContent=C.hero.headline;
@@ -370,35 +356,42 @@ function render(){
   $('stats').innerHTML=C.stats.map(x=>`<div class="fig"><b>${esc(x.value)}</b>${esc(x.label)}</div>`).join('');
   $('proj').innerHTML=C.projectArtists.map(a=>`<span>${esc(a)}</span>`).join('');
   $('events').innerHTML=C.events.map(a=>`<span>${esc(a)}</span>`).join('');
-  $('hhc-intro').textContent=C.hhc.intro;
-  $('partners').innerHTML=C.hhc.partners.map(p=>`<li><b>${esc(p.name)}</b><span>${esc(p.when)}</span></li>`).join('');
-  $('partner').innerHTML=esc(C.partner.text).replace('Tribe Boyz Entertainment','<b style="color:var(--ink)">Tribe Boyz Entertainment</b>');
+  const slug=x=>String(x||'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+  $('vlist').innerHTML=(C.ventures||[]).map(v=>`<div class="grid venture" id="${esc(slug(v.name))}"><div><h2>${esc(v.name)}</h2>${v.tag?`<span class="vtag">${esc(v.tag)}</span>`:''}${v.image?`<img class="hhcimg" src="${esc(v.image)}" alt="${esc(v.name)}">`:''}<p class="lead">${esc(v.about)}</p>${v.link?`<a class="vlink" href="${esc(v.link)}" target="_blank" rel="noopener">Visit ${esc(v.name)} →</a>`:''}</div><div>${(v.partners||[]).length?`<h3 style="font-size:22px;margin-bottom:14px">${esc(v.partnersTitle||'Partners')}</h3><ul class="plist">${v.partners.map(p=>`<li><b>${esc(p.name)}</b><span>${esc(p.when)}</span></li>`).join('')}</ul>`:''}</div></div>`).join('');
+  {const hl=C.partner.highlight||'';let ph=esc(C.partner.text);if(hl)ph=ph.replace(esc(hl),`<b style="color:var(--ink)">${esc(hl)}</b>`);$('partner').innerHTML=ph;}
   $('c-note').textContent=C.contact.note;$('c-loc').textContent=C.contact.locations;
   $('c-mailt').textContent=C.contact.email;$('c-mail').href='mailto:'+C.contact.email;
 }
 render();
 
-const SECTIONS=['design','layout','hero','services','work','hhc','contact','seo'];
-const RAW={},OVR={};
-const assemble=()=>{
-  const g=k=>OVR[k]||RAW[k];
-  const design=g('design'),layout=g('layout'),hero=g('hero'),services=g('services'),work=g('work'),hhc=g('hhc'),contact=g('contact'),seo=g('seo');
-  const d={};
-  if(design)d.design=design;if(layout)d.layout=layout;if(hero)d.hero=hero;if(seo)d.seo=seo;if(contact)d.contact=contact;
-  if(services&&services.items)d.services=services.items;
-  if(work){if(work.cards)d.work=work.cards;if(work.stats)d.stats=work.stats;if(work.projectArtists)d.projectArtists=work.projectArtists;if(work.events)d.events=work.events}
-  if(hhc){d.hhc={image:hhc.image||'',intro:hhc.intro,partners:hhc.partners||[]};if(hhc.partnerLabel!==undefined)d.partner={text:hhc.partnerLabel}}
-  C=merge(DEFAULT,d);render();
+const toC=S=>{
+  const d={};if(!S)return d;
+  const th=S.theme,hd=S.header,he=S.hero,sv=S.services,wk=S.work,ve=S.ventures,pa=S.partners,co=S.contact,se=S.seo;
+  if(th)d.design={logo:th.logo||'',colors:th.colors,fonts:th.fonts,scrollingTitles:th.scrollingTitles};
+  d.layout={};
+  if(hd&&hd.nav)d.layout.nav=hd.nav;
+  d.layout.sections={route:!he||he.showRoute!==false,services:!sv||sv.show!==false,work:!wk||wk.show!==false,hhc:!ve||ve.show!==false,partner:!pa||pa.show!==false,contact:!co||co.show!==false};
+  d.layout.titles={};const T=d.layout.titles;
+  if(sv&&sv.title)T.services=sv.title;if(wk){if(wk.title)T.work=wk.title;if(wk.projectTitle)T.project=wk.projectTitle;if(wk.eventsTitle)T.events=wk.eventsTitle}if(pa&&pa.title)T.partnerLabel=pa.title;
+  if(he){d.hero={image:he.image||'',headline:he.headline,intro:he.intro};if(he.route)d.layout.route=he.route}
+  if(sv&&sv.items)d.services=sv.items;
+  if(wk){if(wk.cards)d.work=wk.cards;if(wk.stats)d.stats=wk.stats;if(wk.projectArtists)d.projectArtists=wk.projectArtists;if(wk.events)d.events=wk.events}
+  if(ve&&ve.items)d.ventures=ve.items;
+  if(pa)d.partner={highlight:pa.highlight||'',text:pa.text||''};
+  if(co)d.contact={email:co.email,note:co.note,locations:co.locations};
+  if(se)d.seo=se;
+  return d;
 };
-const get=f=>fetch('/content/'+f+'.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).catch(()=>null);
-Promise.all(SECTIONS.map(get)).then(list=>{list.forEach((v,i)=>{if(v)RAW[SECTIONS[i]]=v});assemble()});
-/* live preview from the admin panel: the editor sends the section being edited */
+let SITE=null,PREV=null;
+const assemble=()=>{C=merge(DEFAULT,toC(PREV||SITE));render()};
+fetch('/content/site.json',{cache:'no-cache'}).then(r=>r.ok?r.json():null).then(j=>{if(j){SITE=j;assemble()}}).catch(()=>{});
+/* live preview from the admin panel */
 if(/[?&]preview\b/.test(location.search)){
   document.documentElement.classList.add('is-preview');
   window.addEventListener('message',e=>{
-    const m=e.data;if(!m||!m.syPreview||SECTIONS.indexOf(m.section)<0)return;
-    OVR[m.section]=m.data;assemble();
-    if(m.focus){const el=document.getElementById(m.focus);if(el&&!m.quiet)el.scrollIntoView({block:'start'})}
+    const m=e.data;if(!m)return;
+    if(m.syPreview&&m.data){PREV=m.data;assemble()}
+    if(m.syFocus){const el=document.getElementById(m.syFocus);if(el)el.scrollIntoView({block:'start',behavior:'smooth'})}
   });
 }
 }

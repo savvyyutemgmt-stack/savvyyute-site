@@ -1,0 +1,248 @@
+{
+  "theme": {
+    "logo": "",
+    "colors": {
+      "background": "#0e0e0e",
+      "text": "#f4f4f2",
+      "accent": "#ff3b1f",
+      "workStart": "#ff3b1f",
+      "workMiddle": "#ff8a3d",
+      "workEnd": "#f2c7a8",
+      "workText": "#0e0e0e",
+      "contactBackground": "#c9b4ff",
+      "contactText": "#0e0e0e"
+    },
+    "fonts": {
+      "heading": "Anton",
+      "body": "Archivo",
+      "headingCase": "UPPERCASE",
+      "headingSize": "Medium",
+      "bodySize": "Medium"
+    },
+    "scrollingTitles": true
+  },
+  "header": {
+    "nav": [
+      {
+        "label": "Artist services",
+        "target": "services"
+      },
+      {
+        "label": "Label services",
+        "target": "services"
+      },
+      {
+        "label": "Brand partnerships",
+        "target": "services"
+      },
+      {
+        "label": "Hip Hop Cabin",
+        "target": "ventures"
+      },
+      {
+        "label": "Work",
+        "target": "work"
+      },
+      {
+        "label": "Contact",
+        "target": "contact"
+      }
+    ]
+  },
+  "hero": {
+    "image": "",
+    "headline": "Artist management, Lagos to Accra",
+    "intro": "We manage artists and run releases for artists, labels and brands, from the paperwork to the playlists. Through Hip Hop Cabin, we cover the culture too.",
+    "showRoute": true,
+    "route": {
+      "start": "LAGOS",
+      "end": "ACCRA",
+      "steps": [
+        {
+          "title": "Paperwork",
+          "detail": "Splits and agreements signed"
+        },
+        {
+          "title": "Distribution",
+          "detail": "Delivery and metadata"
+        },
+        {
+          "title": "Pitching",
+          "detail": "DSP and editorial"
+        },
+        {
+          "title": "Release",
+          "detail": "Day one, both markets"
+        },
+        {
+          "title": "Marketing",
+          "detail": "PR, content and paid"
+        }
+      ]
+    }
+  },
+  "services": {
+    "show": true,
+    "title": "Services",
+    "items": [
+      {
+        "title": "Artist management",
+        "who": "Artists, Labels",
+        "text": "Career direction, team building and day-to-day decisions. We work with signed and independent acts, often on short-term deals built around one release or project."
+      },
+      {
+        "title": "A&R",
+        "who": "Artists, Labels",
+        "text": "Sound direction, collaborators and song selection, so every release is the right one."
+      },
+      {
+        "title": "Distribution and publishing admin",
+        "who": "Artists, Labels",
+        "text": "Delivery, metadata and PRO registration handled properly, so royalties reach the people who earned them."
+      },
+      {
+        "title": "Release paperwork",
+        "who": "Artists, Labels",
+        "text": "Split sheets, producer agreements and featured-artist agreements, cleared before release day."
+      },
+      {
+        "title": "Rollout, PR and marketing",
+        "who": "Artists, Labels, Brands",
+        "text": "DSP and editorial pitching, press releases, paid social and listening sessions across Nigeria and Ghana."
+      },
+      {
+        "title": "Events and brand partnerships",
+        "who": "Brands",
+        "text": "Event project management in Lagos and Accra, from planning and ticketing to the night itself, and artist partnerships for brands that want the right voice."
+      }
+    ]
+  },
+  "work": {
+    "show": true,
+    "title": "Work",
+    "cards": [
+      {
+        "name": "Tribe Boyz",
+        "kind": "Management client",
+        "points": [
+          "Co-signs from MI Abaga and Odumodublvck",
+          "Debut EP in the top 100 of Apple Music Nigeria's hip-hop chart",
+          "Debut Lagos show, 200+ in attendance"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Napoleon TBFI",
+        "kind": "Management client",
+        "points": [
+          "\"BURTI RIDDIM (Rager 77)\" on Alté Cruise and Naija Bars",
+          "Take Risk and Prosper rollout, listening session at Oblivion",
+          "Double XP!, November 2026"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Maxijonez",
+        "kind": "Management client",
+        "points": [
+          "Featured on \"2 Much Band$$$\" with Napoleon TBFI",
+          "Artist management and release support"
+        ],
+        "image": ""
+      },
+      {
+        "name": "Hip Hop Cabin Sessions",
+        "kind": "Media, our own",
+        "points": [
+          "Performance series filmed between Lagos and Accra",
+          "Opened with Napoleon TBFI"
+        ],
+        "image": ""
+      }
+    ],
+    "stats": [
+      {
+        "value": "2021",
+        "label": "Working with artists since"
+      },
+      {
+        "value": "10+",
+        "label": "Artists worked with"
+      },
+      {
+        "value": "20+",
+        "label": "Editorial playlist placements on Apple Music, Spotify and Audiomack"
+      }
+    ],
+    "projectTitle": "Project work with",
+    "projectArtists": [
+      "AJ Rock",
+      "Vohox",
+      "King Vin"
+    ],
+    "eventsTitle": "Events we've run",
+    "events": [
+      "Vobe Yard",
+      "Nothing Bad Happens on a Friday",
+      "An Evening with Tribe Boyz, with Green Camp"
+    ]
+  },
+  "ventures": {
+    "show": true,
+    "items": [
+      {
+        "name": "Hip Hop Cabin",
+        "tag": "Our media arm",
+        "image": "",
+        "about": "Founded in 2021. Hip Hop Cabin documents African hip-hop with intentional reporting and puts new voices in front of the people who should hear them.",
+        "partnersTitle": "Media partner for",
+        "partners": [
+          {
+            "name": "Nasty C, Ivyson Tour Lagos",
+            "when": "2025"
+          },
+          {
+            "name": "Blackstar Line Fest, Chance the Rapper",
+            "when": "2022"
+          },
+          {
+            "name": "Odumodublvck, The Greatest School Tour",
+            "when": "Lagos"
+          },
+          {
+            "name": "Manifest's Manifestivities",
+            "when": "Two years"
+          },
+          {
+            "name": "Make Music Lagos, editorial partner",
+            "when": "2026"
+          },
+          {
+            "name": "Galaxy Music Awards",
+            "when": "2026"
+          }
+        ],
+        "link": ""
+      }
+    ]
+  },
+  "partners": {
+    "show": true,
+    "title": "Partner label",
+    "highlight": "Tribe Boyz Entertainment",
+    "text": "Tribe Boyz Entertainment is the Lagos hip-hop label that houses Tribe Boyz, Napoleon TBFI and Maxijonez. It's a separate business. Savvy Yute partners with it on artist management and releases."
+  },
+  "contact": {
+    "show": true,
+    "email": "savvyyutemgmt@gmail.com",
+    "note": "Packages are tailored to each project. Start with an inquiry.",
+    "locations": "Lagos, Nigeria · Accra, Ghana"
+  },
+  "seo": {
+    "title": "Savvy Yute Management | Artist Management, Lagos and Accra",
+    "description": "Savvy Yute Management is an artist management and music services company working between Lagos and Accra: A&R, distribution, publishing admin, release paperwork, rollout and PR for artists, labels and brands.",
+    "keywords": "artist management Lagos, artist management Accra, music distribution Nigeria, music PR Ghana, split sheets, release rollout, Hip Hop Cabin",
+    "shareImage": "",
+    "favicon": ""
+  }
+}

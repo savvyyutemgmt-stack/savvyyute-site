@@ -16,215 +16,191 @@ media_folder: images/uploads
 public_folder: /images/uploads
 
 collections:
-  # ---------------------------------------------------------------- 1
-  - name: look
-    label: "1. Look and feel"
-    label_singular: "Look and feel"
-    description: "Colours, fonts and logo for the whole website. Change a colour or font here and it updates everywhere on the site. Photos for individual sections are in 3, 5, 6 and 8."
+  - name: website
+    label: Website
+    label_singular: Website
+    description: "Everything on the website in one place. Open a section on the left; the live preview on the right jumps to it."
     files:
-      - name: design
-        label: "Colours, fonts and logo"
-        file: content/design.json
+      - name: site
+        label: "Edit website"
+        file: content/site.json
         format: json
         fields:
-          - { label: "Logo", name: logo, widget: image, required: false, hint: "Optional. Upload a PNG with a transparent background. Leave empty to keep the current Savvy Yute logo." }
-          - label: "Colours"
-            name: colors
+          - label: "Theme settings"
+            name: theme
             widget: object
+            collapsed: true
+            summary: "Colours, fonts and logo for the whole site"
             fields:
-              - { label: "Page background", name: background, widget: color, hint: "The main background behind everything." }
-              - { label: "Main text", name: text, widget: color, hint: "Headings and body text on the main background." }
-              - { label: "Accent colour", name: accent, widget: color, hint: "Highlighted words, the release route line and small details." }
-              - { label: "Work section: gradient left", name: workStart, widget: color, hint: "The Work section has a colour fade. This is the left side." }
-              - { label: "Work section: gradient middle", name: workMiddle, widget: color }
-              - { label: "Work section: gradient right", name: workEnd, widget: color }
-              - { label: "Work section: text", name: workText, widget: color, hint: "Text sitting on the Work gradient. Pick something that reads clearly on it." }
-              - { label: "Contact section: background", name: contactBackground, widget: color }
-              - { label: "Contact section: text", name: contactText, widget: color }
-          - label: "Fonts and text size"
-            name: fonts
-            widget: object
-            fields:
-              - { label: "Heading font", name: heading, widget: select, options: ["Anton", "Bebas Neue", "Archivo Black", "Oswald", "Space Grotesk", "Syne", "Playfair Display", "DM Serif Display"], hint: "Used for big titles. Anton matches the logo." }
-              - { label: "Body font", name: body, widget: select, options: ["Archivo", "Inter", "DM Sans", "Manrope", "Public Sans", "Work Sans", "Lora", "Source Serif 4"], hint: "Used for paragraphs, menu and small text." }
-              - { label: "Heading style", name: headingCase, widget: select, options: ["UPPERCASE", "Normal"], hint: "UPPERCASE turns every heading into capitals." }
-              - { label: "Heading size", name: headingSize, widget: select, options: ["Small", "Medium", "Large"] }
-              - { label: "Body text size", name: bodySize, widget: select, options: ["Small", "Medium", "Large"] }
-          - { label: "Scrolling section titles", name: scrollingTitles, widget: boolean, default: true, hint: "Turn off to stop the big Services and Work titles from sliding across the screen." }
+              - { label: "Logo", name: logo, widget: image, required: false, hint: "Optional. PNG with a transparent background. Leave empty to keep the current logo." }
+              - label: "Colours"
+                name: colors
+                widget: object
+                fields:
+                  - { label: "Page background", name: background, widget: color }
+                  - { label: "Main text", name: text, widget: color }
+                  - { label: "Accent colour", name: accent, widget: color, hint: "Highlighted words, the route line and small details." }
+                  - { label: "Portfolio band: gradient left", name: workStart, widget: color }
+                  - { label: "Portfolio band: gradient middle", name: workMiddle, widget: color }
+                  - { label: "Portfolio band: gradient right", name: workEnd, widget: color }
+                  - { label: "Portfolio band: text", name: workText, widget: color }
+                  - { label: "Contact band: background", name: contactBackground, widget: color }
+                  - { label: "Contact band: text", name: contactText, widget: color }
+              - label: "Typography"
+                name: fonts
+                widget: object
+                fields:
+                  - { label: "Heading font", name: heading, widget: select, options: ["Anton", "Bebas Neue", "Archivo Black", "Oswald", "Space Grotesk", "Syne", "Playfair Display", "DM Serif Display"], hint: "Anton matches the logo." }
+                  - { label: "Body font", name: body, widget: select, options: ["Archivo", "Inter", "DM Sans", "Manrope", "Public Sans", "Work Sans", "Lora", "Source Serif 4"] }
+                  - { label: "Heading style", name: headingCase, widget: select, options: ["UPPERCASE", "Normal"] }
+                  - { label: "Heading size", name: headingSize, widget: select, options: ["Small", "Medium", "Large"] }
+                  - { label: "Body text size", name: bodySize, widget: select, options: ["Small", "Medium", "Large"] }
+              - { label: "Scrolling section titles", name: scrollingTitles, widget: boolean, default: true, hint: "Turn off to stop the big section titles sliding across the screen." }
 
-  # ---------------------------------------------------------------- 2
-  - name: structure
-    label: "2. Menu and sections"
-    label_singular: "Menu and sections"
-    description: "The links in the top menu, which sections appear on the page, and the section titles."
-    files:
-      - name: layout
-        label: "Menu, sections and titles"
-        file: content/layout.json
-        format: json
-        fields:
-          - label: "Top menu links"
-            name: nav
-            widget: list
-            summary: "{{fields.label}}"
-            hint: "Drag to reorder. Each link scrolls to a section of the page."
-            fields:
-              - { label: "Link text", name: label, widget: string }
-              - { label: "Scrolls to", name: target, widget: select, options: [{ label: Services, value: services }, { label: Work, value: work }, { label: Hip Hop Cabin, value: hip-hop-cabin }, { label: Contact, value: contact }, { label: Top of page, value: top }] }
-          - label: "Show or hide sections"
-            name: sections
+          - label: "Header and menu"
+            name: header
             widget: object
-            hint: "Switch a section off to hide it from the website. Nothing is deleted."
+            collapsed: true
+            summary: "Top menu links"
             fields:
-              - { label: "Release route graphic (under the headline)", name: route, widget: boolean, default: true }
-              - { label: "Services", name: services, widget: boolean, default: true }
-              - { label: "Work", name: work, widget: boolean, default: true }
-              - { label: "Hip Hop Cabin", name: hhc, widget: boolean, default: true }
-              - { label: "Partner label line", name: partner, widget: boolean, default: true }
-              - { label: "Contact", name: contact, widget: boolean, default: true }
-          - label: "Section titles"
-            name: titles
+              - label: "Menu links"
+                name: nav
+                widget: list
+                summary: "{{fields.label}}"
+                hint: "Drag to reorder."
+                fields:
+                  - { label: "Link text", name: label, widget: string }
+                  - { label: "Scrolls to", name: target, widget: select, options: [{ label: Services, value: services }, { label: Portfolio, value: work }, { label: Ventures, value: ventures }, { label: Contact, value: contact }, { label: Top of page, value: top }] }
+
+          - label: "Hero banner"
+            name: hero
             widget: object
+            collapsed: true
+            summary: "{{fields.headline}}"
             fields:
-              - { label: "Services title (scrolling)", name: services, widget: string }
-              - { label: "Work title (scrolling)", name: work, widget: string }
-              - { label: "Hip Hop Cabin title", name: hhc, widget: string }
-              - { label: "Media partners heading", name: partners, widget: string }
-              - { label: "Partner label heading", name: partnerLabel, widget: string }
-              - { label: "Project artists heading", name: project, widget: string }
-              - { label: "Events heading", name: events, widget: string }
-          - label: "Release route graphic"
-            name: route
+              - { label: "Background photo", name: image, widget: image, required: false, hint: "Optional. Landscape, at least 1600px wide. Darkened automatically so the text stays readable." }
+              - { label: "Headline", name: headline, widget: string }
+              - { label: "Intro", name: intro, widget: text, hint: "The words artists, labels and brands turn the accent colour." }
+              - { label: "Show the route graphic", name: showRoute, widget: boolean, default: true }
+              - label: "Route graphic"
+                name: route
+                widget: object
+                collapsed: true
+                fields:
+                  - { label: "Start city", name: start, widget: string }
+                  - { label: "End city", name: end, widget: string }
+                  - label: "Steps"
+                    name: steps
+                    widget: list
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: "Step", name: title, widget: string }
+                      - { label: "Detail", name: detail, widget: string }
+
+          - label: "Services"
+            name: services
             widget: object
-            hint: "The line under the headline that runs from one city to the other."
+            collapsed: true
+            summary: "{{fields.title}}"
             fields:
-              - { label: "Start city", name: start, widget: string }
-              - { label: "End city", name: end, widget: string }
-              - label: "Steps along the route"
-                name: steps
+              - { label: "Show this section", name: show, widget: boolean, default: true }
+              - { label: "Section title", name: title, widget: string, hint: "The big scrolling title." }
+              - label: "Services"
+                name: items
                 widget: list
                 summary: "{{fields.title}}"
+                hint: "Drag to reorder. Numbers are added automatically."
                 fields:
-                  - { label: "Step name", name: title, widget: string }
-                  - { label: "Short detail", name: detail, widget: string }
+                  - { label: "Service name", name: title, widget: string }
+                  - { label: "Who it's for", name: who, widget: string, hint: "Separate with commas, e.g. Artists, Labels, Brands." }
+                  - { label: "Description", name: text, widget: text }
 
-  # ---------------------------------------------------------------- 3
-  - name: home
-    label: "3. Headline"
-    label_singular: "Headline"
-    description: "The big headline and intro text at the top of the website."
-    files:
-      - name: hero
-        label: "Headline and intro"
-        file: content/hero.json
-        format: json
-        fields:
-          - { label: "Background photo", name: image, widget: image, required: false, hint: "Optional. A wide photo (landscape, at least 1600px wide) behind the headline. It's darkened automatically so the text stays readable. Leave empty for a plain background." }
-          - { label: "Headline", name: headline, widget: string, hint: "Keep it short. It shows very large." }
-          - { label: "Intro", name: intro, widget: text, hint: "The words artists, labels and brands turn the accent colour automatically." }
-
-  # ---------------------------------------------------------------- 4
-  - name: services
-    label: "4. Services"
-    label_singular: "Services"
-    description: "The numbered list of what Savvy Yute offers. Numbers are added automatically in the order shown."
-    files:
-      - name: services
-        label: "Services list"
-        file: content/services.json
-        format: json
-        fields:
-          - label: "Services"
-            name: items
-            widget: list
-            summary: "{{fields.title}}"
-            hint: "Drag to reorder. Add or remove services here."
+          - label: "Portfolio"
+            name: work
+            widget: object
+            collapsed: true
+            summary: "Clients, figures, project artists and events"
             fields:
-              - { label: "Service name", name: title, widget: string }
-              - { label: "Who it's for", name: who, widget: string, hint: "Separate with commas, e.g. Artists, Labels, Brands. Each one shows as a small tag." }
-              - { label: "Description", name: text, widget: text }
+              - { label: "Show this section", name: show, widget: boolean, default: true }
+              - { label: "Section title", name: title, widget: string, hint: "The big scrolling title, e.g. Work or Our clients." }
+              - label: "Client cards"
+                name: cards
+                widget: list
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: "Name", name: name, widget: string }
+                  - { label: "Small label", name: kind, widget: string, default: "Management client" }
+                  - { label: "Highlights", name: points, widget: list, field: { label: "Highlight", name: point, widget: string } }
+                  - { label: "Photo", name: image, widget: image, required: false, hint: "Optional. Portrait, about 900 x 1200." }
+              - label: "Key figures"
+                name: stats
+                widget: list
+                summary: "{{fields.value}} {{fields.label}}"
+                fields:
+                  - { label: "Figure", name: value, widget: string }
+                  - { label: "Label", name: label, widget: string }
+              - { label: "Project artists heading", name: projectTitle, widget: string }
+              - { label: "Project artists", name: projectArtists, widget: list, field: { label: "Artist", name: artist, widget: string }, hint: "Leave empty to hide." }
+              - { label: "Events heading", name: eventsTitle, widget: string }
+              - { label: "Events", name: events, widget: list, field: { label: "Event", name: event, widget: string }, hint: "Leave empty to hide." }
 
-  # ---------------------------------------------------------------- 5
-  - name: work
-    label: "5. Work and clients"
-    label_singular: "Work and clients"
-    description: "The client cards, the big numbers, project artists and events."
-    files:
-      - name: work
-        label: "Clients, figures, artists and events"
-        file: content/work.json
-        format: json
-        fields:
-          - label: "Client cards"
-            name: cards
-            widget: list
-            summary: "{{fields.name}}"
-            hint: "Each card is one artist or project. Drag to reorder."
+          - label: "Ventures"
+            name: ventures
+            widget: object
+            collapsed: true
+            summary: "Businesses and platforms under Savvy Yute"
             fields:
-              - { label: "Name", name: name, widget: string }
-              - { label: "Small label above the name", name: kind, widget: string, default: "Management client", hint: "e.g. Management client, Media, our own" }
-              - { label: "Highlights", name: points, widget: list, field: { label: "Highlight", name: point, widget: string }, hint: "Two or three short lines work best." }
-              - { label: "Photo", name: image, widget: image, required: false, hint: "Optional. A portrait photo replaces the dark card background." }
-          - label: "Big numbers"
-            name: stats
-            widget: list
-            summary: "{{fields.value}} {{fields.label}}"
-            fields:
-              - { label: "Number", name: value, widget: string, hint: "e.g. 20+" }
-              - { label: "What it means", name: label, widget: string }
-          - { label: "Project artists", name: projectArtists, widget: list, field: { label: "Artist", name: artist, widget: string }, hint: "Artists you've done one-off project work with. Leave empty to hide." }
-          - { label: "Events", name: events, widget: list, field: { label: "Event", name: event, widget: string }, hint: "Events you've run. Leave empty to hide." }
+              - { label: "Show this section", name: show, widget: boolean, default: true }
+              - label: "Ventures"
+                name: items
+                widget: list
+                summary: "{{fields.name}}"
+                hint: "One entry per business or platform, e.g. Hip Hop Cabin. Add more as Savvy Yute grows. Drag to reorder."
+                fields:
+                  - { label: "Name", name: name, widget: string }
+                  - { label: "Small label", name: tag, widget: string, required: false, hint: "e.g. Our media arm" }
+                  - { label: "Photo", name: image, widget: image, required: false, hint: "Optional. Landscape works best." }
+                  - { label: "About", name: about, widget: text }
+                  - { label: "Website link", name: link, widget: string, required: false, hint: "Optional. Full address, e.g. https://..." }
+                  - { label: "Partners heading", name: partnersTitle, widget: string, default: "Partners" }
+                  - label: "Partners"
+                    name: partners
+                    widget: list
+                    summary: "{{fields.name}}"
+                    fields:
+                      - { label: "Partner or event", name: name, widget: string }
+                      - { label: "Year or note", name: when, widget: string }
 
-  # ---------------------------------------------------------------- 6
-  - name: hhc
-    label: "6. Hip Hop Cabin"
-    label_singular: "Hip Hop Cabin"
-    description: "The Hip Hop Cabin section, its media partners, and the partner label line underneath."
-    files:
-      - name: hhc
-        label: "Hip Hop Cabin and partner label"
-        file: content/hhc.json
-        format: json
-        fields:
-          - { label: "Hip Hop Cabin photo", name: image, widget: image, required: false, hint: "Optional. Shows under the Hip Hop Cabin title, e.g. a Cabin Sessions still. Landscape works best." }
-          - { label: "About Hip Hop Cabin", name: intro, widget: text }
-          - label: "Media partners"
+          - label: "Partners"
             name: partners
-            widget: list
-            summary: "{{fields.name}}"
+            widget: object
+            collapsed: true
+            summary: "{{fields.title}}"
             fields:
-              - { label: "Partner or event", name: name, widget: string }
-              - { label: "Year or note", name: when, widget: string, hint: "Shows on the right, e.g. 2025" }
-          - { label: "Partner label line", name: partnerLabel, widget: text, hint: "The words Tribe Boyz Entertainment show in bold automatically." }
+              - { label: "Show this section", name: show, widget: boolean, default: true }
+              - { label: "Heading", name: title, widget: string }
+              - { label: "Name to highlight", name: highlight, widget: string, required: false, hint: "This name shows in bold inside the text." }
+              - { label: "Text", name: text, widget: text }
 
-  # ---------------------------------------------------------------- 7
-  - name: contact
-    label: "7. Contact"
-    label_singular: "Contact"
-    description: "Your contact email and locations. Used in the Contact section and the footer."
-    files:
-      - name: contact
-        label: "Email and locations"
-        file: content/contact.json
-        format: json
-        fields:
-          - { label: "Contact email", name: email, widget: string, hint: "Inquiries from the website are addressed to this email." }
-          - { label: "Line above the inquiry form", name: note, widget: text }
-          - { label: "Locations", name: locations, widget: string, hint: "Shows in the footer." }
+          - label: "Contact and footer"
+            name: contact
+            widget: object
+            collapsed: true
+            summary: "{{fields.email}}"
+            fields:
+              - { label: "Show the contact section", name: show, widget: boolean, default: true }
+              - { label: "Contact email", name: email, widget: string }
+              - { label: "Line above the inquiry form", name: note, widget: text }
+              - { label: "Locations (footer)", name: locations, widget: string }
 
-  # ---------------------------------------------------------------- 8
-  - name: seo
-    label: "8. Google search (SEO)"
-    label_singular: "Google search"
-    description: "How the site appears in Google results and when the link is shared on WhatsApp, X or LinkedIn."
-    files:
-      - name: seo
-        label: "Search title and description"
-        file: content/seo.json
-        format: json
-        fields:
-          - { label: "Page title", name: title, widget: string, hint: "The blue link in Google and the browser tab. Under 60 characters." }
-          - { label: "Description", name: description, widget: text, hint: "The grey text under the link in Google. Aim for 140 to 160 characters." }
-          - { label: "Keywords", name: keywords, widget: string, hint: "Comma separated. Optional." }
-          - { label: "Share image", name: shareImage, widget: image, required: false, hint: "The picture that shows when the link is shared on WhatsApp, X or LinkedIn. Use 1200 x 630 pixels." }
-          - { label: "Browser tab icon", name: favicon, widget: image, required: false, hint: "The small icon in the browser tab. A square PNG, at least 64 x 64 pixels." }
+          - label: "SEO and sharing"
+            name: seo
+            widget: object
+            collapsed: true
+            summary: "Google title, description and share image"
+            fields:
+              - { label: "Page title", name: title, widget: string, hint: "Under 60 characters." }
+              - { label: "Description", name: description, widget: text, hint: "140 to 160 characters." }
+              - { label: "Keywords", name: keywords, widget: string, required: false }
+              - { label: "Share image", name: shareImage, widget: image, required: false, hint: "Shown when the link is shared. 1200 x 630." }
+              - { label: "Browser tab icon", name: favicon, widget: image, required: false, hint: "Square PNG, at least 64 x 64." }
