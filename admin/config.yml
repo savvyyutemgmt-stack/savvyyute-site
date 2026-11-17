@@ -1,0 +1,97 @@
+# Savvy Yute Management site editor (Decap CMS)
+# Log in at https://savvyyute.netlify.app/admin/
+backend:
+  name: git-gateway
+  branch: main
+
+# Edits are saved as drafts first. Each draft gets its own Netlify preview link.
+# Clicking "Publish" in the editor puts the change live on savvyyute.netlify.app.
+publish_mode: editorial_workflow
+
+site_url: https://savvyyute.netlify.app
+display_url: https://savvyyute.netlify.app
+logo_url: /admin/logo.png
+
+media_folder: images/uploads
+public_folder: /images/uploads
+
+collections:
+  - name: site
+    label: Website
+    editor:
+      preview: false
+    files:
+      - name: content
+        label: Site content
+        file: content.json
+        format: json
+        fields:
+          - label: Search (SEO)
+            name: seo
+            widget: object
+            collapsed: true
+            fields:
+              - { label: Page title, name: title, widget: string, hint: "Shown in Google and the browser tab. Keep it under 60 characters." }
+              - { label: Meta description, name: description, widget: text, hint: "The snippet under your link in search results. Aim for 140 to 160 characters." }
+              - { label: Keywords, name: keywords, widget: string, hint: "Comma separated." }
+          - label: Hero
+            name: hero
+            widget: object
+            fields:
+              - { label: Headline, name: headline, widget: string }
+              - { label: Intro, name: intro, widget: text, hint: "The words artists, labels and brands are highlighted in red automatically." }
+          - label: Services
+            name: services
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: Service, name: title, widget: string }
+              - { label: "For (comma separated, e.g. Artists, Labels)", name: who, widget: string }
+              - { label: Description, name: text, widget: text }
+          - label: Work cards
+            name: work
+            widget: list
+            summary: "{{fields.name}}"
+            fields:
+              - { label: Name, name: name, widget: string }
+              - { label: Label above name, name: kind, widget: string, default: "Management client" }
+              - { label: Highlights, name: points, widget: list, field: { label: Highlight, name: point, widget: string } }
+          - label: Figures
+            name: stats
+            widget: list
+            summary: "{{fields.value}} {{fields.label}}"
+            fields:
+              - { label: Figure, name: value, widget: string }
+              - { label: Label, name: label, widget: string }
+          - label: Project artists
+            name: projectArtists
+            widget: list
+            field: { label: Artist, name: artist, widget: string }
+          - label: Events
+            name: events
+            widget: list
+            field: { label: Event, name: event, widget: string }
+          - label: Hip Hop Cabin
+            name: hhc
+            widget: object
+            fields:
+              - { label: Intro, name: intro, widget: text }
+              - label: Media partners
+                name: partners
+                widget: list
+                summary: "{{fields.name}}"
+                fields:
+                  - { label: Partner, name: name, widget: string }
+                  - { label: Year or note, name: when, widget: string }
+          - label: Partner label
+            name: partner
+            widget: object
+            fields:
+              - { label: Text, name: text, widget: text }
+          - label: Contact
+            name: contact
+            widget: object
+            fields:
+              - { label: Email, name: email, widget: string }
+              - { label: Line above the inquiry sentence, name: note, widget: text }
+              - { label: Locations, name: locations, widget: string }
