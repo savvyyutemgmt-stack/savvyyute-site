@@ -101,7 +101,9 @@ footer img{width:84px;margin-bottom:10px}
 footer .loc{color:var(--soft);font-size:14px}
 footer .mail{display:flex;align-items:center;gap:14px;text-decoration:none;font-weight:700;font-size:clamp(17px,2vw,22px);overflow-wrap:anywhere}
 footer .mail i{flex:none;width:48px;height:48px;border:2px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-style:normal}
-footer .copy{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;color:var(--soft);font-size:14px}
+.adminbtn{font:500 14px var(--bd),sans-serif;background:none;border:0;color:var(--soft);cursor:pointer;padding:10px 0;min-height:44px;text-decoration:underline;text-underline-offset:4px}
+.adminbtn:hover{color:var(--ink)}
+footer .copy{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;align-items:center;grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;color:var(--soft);font-size:14px}
 @media(max-width:1000px){.cards{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:900px){.hhc .grid,.partner,.lists{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:700px){.svc li{grid-template-columns:48px minmax(0,1fr)}.svc li p,.svc li .for{grid-column:2}.after{grid-template-columns:minmax(0,1fr)}}
@@ -227,7 +229,7 @@ footer .copy{grid-column:1/-1;border-top:1px solid var(--line);padding-top:18px;
       <div class="loc" style="margin-bottom:8px">Contact us</div>
       <a class="mail" id="c-mail" href="mailto:savvyyutemgmt@gmail.com"><span id="c-mailt">savvyyutemgmt@gmail.com</span><i aria-hidden="true">→</i></a>
     </div>
-    <div class="copy">© 2026 Savvy Yute Management</div>
+    <div class="copy"><span>© 2026 Savvy Yute Management</span><button type="button" id="adminBtn" class="adminbtn">Admin sign in</button></div>
   </div>
 </footer>
 
@@ -378,7 +380,15 @@ Promise.all(['design','layout','hero','services','work','hhc','contact','seo'].m
 }
 </script>
 <script>
-if(window.netlifyIdentity){netlifyIdentity.on("init",u=>{if(!u){netlifyIdentity.on("login",()=>{document.location.href="/admin/"})}})}
+(function(){
+  var b=document.getElementById('adminBtn');var id=window.netlifyIdentity;
+  if(!id){if(b)b.style.display='none';return}
+  var set=function(u){if(b)b.textContent=u?'Open admin':'Admin sign in'};
+  id.on('init',set);
+  id.on('login',function(){id.close();document.location.href='/admin/'});
+  id.on('logout',function(){set(null)});
+  if(b)b.addEventListener('click',function(){var u=id.currentUser();if(u){document.location.href='/admin/'}else{id.open('login')}});
+})();
 </script>
 </body>
 </html>
