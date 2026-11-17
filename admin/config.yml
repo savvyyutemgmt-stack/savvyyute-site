@@ -26,6 +26,81 @@ collections:
         file: content.json
         format: json
         fields:
+          - label: "Design: colours, fonts, logo"
+            name: design
+            widget: object
+            collapsed: true
+            fields:
+              - { label: "Logo (optional, PNG with transparent background)", name: logo, widget: image, required: false }
+              - label: Colours
+                name: colors
+                widget: object
+                fields:
+                  - { label: Page background, name: background, widget: color }
+                  - { label: Main text, name: text, widget: color }
+                  - { label: "Accent (buttons, highlights, route line)", name: accent, widget: color }
+                  - { label: Work band gradient start, name: workStart, widget: color }
+                  - { label: Work band gradient middle, name: workMiddle, widget: color }
+                  - { label: Work band gradient end, name: workEnd, widget: color }
+                  - { label: Work band text, name: workText, widget: color }
+                  - { label: Contact band background, name: contactBackground, widget: color }
+                  - { label: Contact band text, name: contactText, widget: color }
+              - label: Text style
+                name: fonts
+                widget: object
+                fields:
+                  - { label: Heading font, name: heading, widget: select, options: ["Anton", "Bebas Neue", "Archivo Black", "Oswald", "Space Grotesk", "Syne", "Playfair Display", "DM Serif Display"] }
+                  - { label: Body font, name: body, widget: select, options: ["Archivo", "Inter", "DM Sans", "Manrope", "Public Sans", "Work Sans", "Lora", "Source Serif 4"] }
+                  - { label: Heading case, name: headingCase, widget: select, options: ["UPPERCASE", "Normal"] }
+                  - { label: Heading size, name: headingSize, widget: select, options: ["Small", "Medium", "Large"] }
+                  - { label: Body text size, name: bodySize, widget: select, options: ["Small", "Medium", "Large"] }
+              - { label: Scrolling section titles, name: scrollingTitles, widget: boolean, default: true }
+          - label: "Layout: menu, sections, titles"
+            name: layout
+            widget: object
+            collapsed: true
+            fields:
+              - label: Menu links
+                name: nav
+                widget: list
+                summary: "{{fields.label}}"
+                fields:
+                  - { label: Text, name: label, widget: string }
+                  - { label: Goes to, name: target, widget: select, options: [{ label: Services, value: services }, { label: Work, value: work }, { label: Hip Hop Cabin, value: hip-hop-cabin }, { label: Contact, value: contact }, { label: Top of page, value: top }] }
+              - label: Show or hide sections
+                name: sections
+                widget: object
+                fields:
+                  - { label: Release route graphic, name: route, widget: boolean, default: true }
+                  - { label: Services, name: services, widget: boolean, default: true }
+                  - { label: Work, name: work, widget: boolean, default: true }
+                  - { label: Hip Hop Cabin, name: hhc, widget: boolean, default: true }
+                  - { label: Partner label line, name: partner, widget: boolean, default: true }
+                  - { label: Contact, name: contact, widget: boolean, default: true }
+              - label: Section titles
+                name: titles
+                widget: object
+                fields:
+                  - { label: Services (scrolling title), name: services, widget: string }
+                  - { label: Work (scrolling title), name: work, widget: string }
+                  - { label: Hip Hop Cabin heading, name: hhc, widget: string }
+                  - { label: Media partners heading, name: partners, widget: string }
+                  - { label: Partner label heading, name: partnerLabel, widget: string }
+                  - { label: Project artists heading, name: project, widget: string }
+                  - { label: Events heading, name: events, widget: string }
+              - label: Release route graphic
+                name: route
+                widget: object
+                fields:
+                  - { label: Start city, name: start, widget: string }
+                  - { label: End city, name: end, widget: string }
+                  - label: Steps
+                    name: steps
+                    widget: list
+                    summary: "{{fields.title}}"
+                    fields:
+                      - { label: Step, name: title, widget: string }
+                      - { label: Detail, name: detail, widget: string }
           - label: Search (SEO)
             name: seo
             widget: object
@@ -56,6 +131,7 @@ collections:
               - { label: Name, name: name, widget: string }
               - { label: Label above name, name: kind, widget: string, default: "Management client" }
               - { label: Highlights, name: points, widget: list, field: { label: Highlight, name: point, widget: string } }
+              - { label: "Photo (optional, replaces the dark card)", name: image, widget: image, required: false }
           - label: Figures
             name: stats
             widget: list
